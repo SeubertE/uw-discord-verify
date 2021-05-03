@@ -1,6 +1,6 @@
 # uw-discord-verify
- This bot is meant to be deployed on [UW Shared Hosting](https://itconnect.uw.edu/connect/web-publishing/shared-hosting/) to take advantage of the ability to authenticate via UW NetID. Theoretically it could be deployed on any server that has the proper certicifate from UW and Shibboleth configured.
----
+This bot is meant to be deployed on [UW Shared Hosting](https://itconnect.uw.edu/connect/web-publishing/shared-hosting/) to take advantage of the ability to authenticate via UW NetID. Theoretically it could be deployed on any server that has the proper certicifate from UW and Shibboleth configured.
+
 ## Deploying the bot on ovid.u.washington.edu or vergil.u.washington.edu
 
 1. Pull the repo into the server
