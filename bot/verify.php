@@ -42,11 +42,10 @@ if(session('access_token')) {
 
   //send message to channel that user was verified
   $postdata = array(
-    //"content" => 'User ID: <@' . $user->id . '> . ' (User ID:' .$user->id. ') verified with UW NETID ' . $_SERVER['REMOTE_USER'],
-    //"content" => "test"
+    "content" => 'User ID: <@' . $user->id . '> (User ID:' .$user->id. ') verified with UW NETID' . $_SERVER['REMOTE_USER'],
   );
-  //$rvalsendmessage = callApi('https://discord.com/api/channels/' . $channelId . '/messages', 'POST', $header, $postdata);
-  $rvalsendmessage = callApi($webhookURL, 'POST', array('Content-Type: application/json'), $postdata);
+  $rvalsendmessage = callApi('https://discord.com/api/channels/' . $channelId . '/messages', 'POST', $header, $postdata);
+  //$rvalsendmessage = callApi($webhookURL, 'POST', array('Content-Type: application/json'), $postdata);
 
   //add them to the server!
   $putdata = array(
@@ -114,8 +113,6 @@ function callApi($url, $method = '', $headers = array(), $data = array()) {
     {
         case "POST":
           curl_setopt($curl, CURLOPT_POST, true);
-          //curl_setopt($curl, CURLOPT_CUSTOMREQUEST, 'POST');
-          print('POST POST POST POST!');
           curl_setopt($curl, CURLOPT_POSTFIELDS, json_encode($data));
           break;
         case "PUT":
@@ -132,14 +129,7 @@ function callApi($url, $method = '', $headers = array(), $data = array()) {
     curl_setopt($curl, CURLOPT_FOLLOWLOCATION, TRUE);
     curl_setopt($curl, CURLOPT_RETURNTRANSFER, TRUE);
 
-    curl_setopt($curl, CURLOPT_VERBOSE, true);
-    print_r(curl_getinfo($curl));
-
-    print_r($headers);
-    print_r($data);
-
     $result = curl_exec($curl);
-    print_r($result);
     curl_close($curl);
     return json_decode($result);
 }
