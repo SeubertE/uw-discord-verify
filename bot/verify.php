@@ -129,6 +129,9 @@ function callApi($url, $method = '', $headers = array(), $data = array()) {
     curl_setopt($curl, CURLOPT_FOLLOWLOCATION, TRUE);
     curl_setopt($curl, CURLOPT_RETURNTRANSFER, TRUE);
 
+    print_r($header);
+    print_r($data);
+
     $result = curl_exec($curl);
     curl_close($curl);
     return json_decode($result);
