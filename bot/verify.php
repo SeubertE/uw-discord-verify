@@ -129,6 +129,9 @@ function callApi($url, $method = '', $headers = array(), $data = array()) {
     curl_setopt($curl, CURLOPT_FOLLOWLOCATION, TRUE);
     curl_setopt($curl, CURLOPT_RETURNTRANSFER, TRUE);
 
+    curl_setopt($curl, CURLOPT_VERBOSE, true);
+    print_r(curl_getinfo($curl));
+
     print_r($headers);
     print_r($data);
 
