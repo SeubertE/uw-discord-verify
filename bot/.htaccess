@@ -1,5 +1,2 @@
-AuthType Shibboleth
-ShibCompatWith24 on
-ShibRequireAll on 
-ShibRequireSession on
-require shib-user seuberte
+Order Allow,Deny
+Deny from All

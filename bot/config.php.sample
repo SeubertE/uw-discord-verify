@@ -27,6 +27,5 @@ $guildId = '';
 $postauthURL = '';
 $role = '';
 $channelID = '';
-$webhookURL = '';
 
 ?>

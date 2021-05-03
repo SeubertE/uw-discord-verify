@@ -42,7 +42,7 @@ if(session('access_token')) {
 
   //send message to channel that user was verified
   $postdata = array(
-    "content" => 'User ID: <@' . $user->id . '> (User ID:' .$user->id. ') verified with UW NETID' . $_SERVER['REMOTE_USER'],
+    "content" => 'User ID: <@' . $user->id . '> (User ID:' .$user->id. ') verified with UW NETID ' . $_SERVER['REMOTE_USER'],
   );
   $rvalsendmessage = callApi('https://discord.com/api/channels/' . $channelId . '/messages', 'POST', $header, $postdata);
   //$rvalsendmessage = callApi($webhookURL, 'POST', array('Content-Type: application/json'), $postdata);
@@ -60,12 +60,8 @@ if(session('access_token')) {
   $rvalchangeandverify = callApi('https://discord.com/api/guilds/' . $guildId . '/members/' . $user->id, 'PATCH', $header, $putdata);
 
   //redirect after done
-  //header('Location: ' . $postauthURL);
-
-  //debugging
-/*   print_r($postdata);
-  print_r($rvalsendmessage); */
-
+  header('Location: ' . $postauthURL);
+  
   die();
 } 
 
