@@ -32,8 +32,11 @@ Edit `runonce.py` with the proper keys and such.
 
 ```
 cd bot
-python3 -m venv
-pip update
+python3 -m venv ./
+source bin/activate
+pip install -U pip
 pip install discord.py
 python3 runonce.py
 ```
+
+You can then deactivate and delete the python virtual environment if you'd like.
