@@ -153,7 +153,7 @@ include('./bot/verify.php');
         You may use the link above, or use this invite here: <a href="https://discord.gg/ThPEgDj3yP">https://discord.gg/ThPEgDj3yP</a></span>
       <br>
     </div>
-    <p> <input onchange="document.getElementById('submit').disabled = !this.checked;"
+    <p> <input onchange="document.getElementById('button').disabled = !this.checked;"
 
         id="checkbox" type="checkbox"><span style="font-family: Open Sans;"> </span><label
 
@@ -164,9 +164,10 @@ include('./bot/verify.php');
           prompted to login to your Discord account after clicking this button.
           You may want to consider creating a separate academic Discord account.</span></label><br>
     </p>
-    <form action="?action=verify">
+    <button type="button" disabled=disabled onclick="location.href='http://students.washington.edu/seuberte/discord?action=verify';">Verify</button>
+    <!--<form action="?action=verify">
       <center> <input name="submit" class="inputButton" id="submit" disabled="disabled" type="submit"> </center>
-    </form>
+    </form>-->
     <p></p>
   </body>
 </html>
