@@ -165,9 +165,9 @@ include('./bot/verify.php');
           You may want to consider creating a separate academic Discord account.</span></label><br>
     </p>
     
-    <button type="button" disabled=disabled onclick="location.href='http://students.washington.edu/seuberte/discord?action=acceptedterms';">Verify</button>
-    <form action="?action=verify">
-      <center> <input name="submit" class="inputButton" id="submit" disabled="disabled" type="submit"> </center>
+    <form action="/index.php?action=acceptedterms">
+      <center> <input name="button" class="inputButton" id="submit" disabled="disabled" type="submit"> </center>
     </form>
+
   </body>
 </html>
