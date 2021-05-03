@@ -116,8 +116,10 @@ function callApi($url, $method = '', $headers = array(), $data = array()) {
     switch ($method)
     {
         case "POST":
-            curl_setopt($curl, CURLOPT_POST, TRUE);
-            curl_setopt($curl, CURLOPT_POSTFIELDS, json_encode($data));
+          print("POSTING");
+          print_r($data)
+          curl_setopt($curl, CURLOPT_POST, TRUE);
+          curl_setopt($curl, CURLOPT_POSTFIELDS, json_encode($data));
         case "PUT":
           curl_setopt($curl, CURLOPT_CUSTOMREQUEST, 'PUT');
           curl_setopt($curl, CURLOPT_POSTFIELDS, json_encode($data));
