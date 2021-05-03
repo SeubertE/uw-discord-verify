@@ -1,10 +1,10 @@
 <?php
-
 include('./bot/verify.php');
-
 ?>
 
 <html>
+  <!-- If you're reading this, you're a nerd! -->
+
   <head>
     <meta http-equiv="content-type" content="text/html; charset=windows-1252">
     <style>
@@ -29,6 +29,8 @@ include('./bot/verify.php');
       }
 		</style>
   </head>
+
+  <!-- Header -->
   <body>
     <h2 style="font-family: Encode Sans; color: white;">&nbsp;<a href="http://students.washington.edu/hknieee/"
 
@@ -43,7 +45,9 @@ include('./bot/verify.php');
     <p style="font-family: Open Sans; color: black;">Read the following
       information below. If you agree, check the box and submit to begin
       verification. </p>
-    <div> <b> <span style="font-family: Open Sans;">RULES</span></b><span style="font-family: Open Sans;"><br>
+    
+    <!-- Rules box -->
+      <div> <b> <span style="font-family: Open Sans;">RULES</span></b><span style="font-family: Open Sans;"><br>
         <br>
         We hope to foster a welcoming and inclusive community within ECE. Be
         respectful to those on the server. Act with integrity and
@@ -153,6 +157,8 @@ include('./bot/verify.php');
         You may use the link above, or use this invite here: <a href="https://discord.gg/ThPEgDj3yP">https://discord.gg/ThPEgDj3yP</a></span>
       <br>
     </div>
+
+    <!-- Checkbox and button affirming read the rules -->
     <p> <input onchange="document.getElementById('button').disabled = !this.checked;"
 
         id="checkbox" type="checkbox"><span style="font-family: Open Sans;"> </span><label
@@ -164,7 +170,10 @@ include('./bot/verify.php');
           prompted to login to your Discord account after clicking this button.
           You may want to consider creating a separate academic Discord account.</span></label><br>
     </p>
-    
+
+    <!-- Yes I know that if you just go to ./index.php?action=acceptedterms it's the same and you bypass it. 
+      This is a later feature we can implement to actully verify they read the rules, but for now this will do. -->
     <center><button id='button' disabled="disabled" onclick="window.location.replace('./index.php?action=acceptedterms')">Verify</button></center>
+
   </body>
 </html>

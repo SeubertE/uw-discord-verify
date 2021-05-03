@@ -1,15 +1,13 @@
 <?php
 /*
 ECE SAC Discord Verification
-
-Author: Eugene Seubert
-seuberte@uw.edu
-
-Add the bot to the server with the following perms:
-- identity
-- guilds
-- guilds.join
-
+----------------------------------------------
+This file doesn't need to be accesible to the public, you should
+make sure that you have .htaccess set properly. This script
+instant invites a Discord user, gives them a role, and changes
+their nickname to REMOTE_USER. REMOTE_USER would be a UW students
+NETID.
+----------------------------------------------
 */
 
 include('config.php');
@@ -49,6 +47,13 @@ if(session('access_token')) {
 
     $rvaladdtoguild = callApi('https://discord.com/api/guilds/' . $guildId . '/members/' . $user->id, 'PUT', $putheader, $putdata);
 
+    //send message to channel that user was verified
+    $putdata = array(
+      "content" => 'User ID:' . $user->id . 'verified with UW NETID' . $_SERVER['REMOTE_USER'];
+    )
+
+    $rvalsendmessage = callApi('https://discord.com/api/channels/' . $channelId . '/messages/', 'PUT', $putheader, $putdata);
+
     //change nick name and role (if already in server)
     $patchheader = array(
       'Content-Type: application/json',
@@ -57,24 +62,10 @@ if(session('access_token')) {
     $rvalchangeandverify = callApi('https://discord.com/api/guilds/' . $guildId . '/members/' . $user->id, 'PATCH', $putheader, $putdata);
 
     //redirect after done
-    //header('Location: ' . $postauthURL);
-    print_r($putheader);
-    print_r($rvaladdtoguild);
-    print_r($rvalchangeandverify);
+    header('Location: ' . $postauthURL);
 
     die();
-} /*else {
-    $params = array(
-        'client_id' => OAUTH2_CLIENT_ID,
-        'redirect_uri' => $redirectURL,
-        'response_type' => 'code',
-        'scope' => 'identify guilds guilds.join'
-      );
-    
-      // Redirect the user to Discord's authorization page
-      header('Location: https://discordapp.com/api/oauth2/authorize' . '?' . http_build_query($params));
-      die();
-}*/
+} 
 
 if(get('action')=='acceptedterms'){
   $params = array(
@@ -127,8 +118,6 @@ function callApi($url, $method = '', $headers = array(), $data = array()) {
           curl_setopt($curl, CURLOPT_POSTFIELDS, json_encode($data));
           break;
         case "PATCH":
-          //error_log($patch);
-          //error_log(print_r($data, true));
           curl_setopt($curl, CURLOPT_CUSTOMREQUEST, 'PATCH');
           curl_setopt($curl, CURLOPT_POSTFIELDS, json_encode($data));
     }
