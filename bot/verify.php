@@ -62,10 +62,10 @@ if(session('access_token')) {
     $rvalchangeandverify = callApi('https://discord.com/api/guilds/' . $guildId . '/members/' . $user->id, 'PATCH', $putheader, $putdata);
 
     //redirect after done
-    header('Location: ' . $postauthURL);
+    //header('Location: ' . $postauthURL);
 
     //debugging
-    error_log(print_r($rvalsendmessage));
+    print_r($rvalsendmessage);
 
     die();
 } 
