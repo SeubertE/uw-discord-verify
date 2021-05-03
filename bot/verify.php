@@ -34,28 +34,29 @@ if(session('access_token')) {
     //get userid
     $user = callApi('https://discord.com/api/users/@me', '', array('Authorization: Bearer ' . session('access_token'), 'Content-Type' => 'application/json'));
 
-    //add them to the server!
-    $putheader = array(
+    //http header to auth
+    $header = array(
         'Content-Type: application/json',
         'Authorization: Bot ' . $botToken,
     );
 
+    //send message to channel that user was verified
+    $postdata = array(
+      "content" => 'User ID: ' . $user->id . ' verified with UW NETID ' . $_SERVER['REMOTE_USER'],
+    );
+    $rvalsendmessage = callApi('https://discord.com/api/channels/' . $channelId . '/messages', 'POST', $header, $postdata);
+
+    //add them to the server!
     $putdata = array(
         "access_token" => session('access_token'),
         "nick" => $_SERVER['REMOTE_USER'],
         "roles" => array($role)
     );
 
-    $rvaladdtoguild = callApi('https://discord.com/api/guilds/' . $guildId . '/members/' . $user->id, 'PUT', $putheader, $putdata);
-
-    //send message to channel that user was verified
-    $postdata = array(
-      "content" => 'User ID: ' . $user->id . ' verified with UW NETID ' . $_SERVER['REMOTE_USER'],
-    );
-    $rvalsendmessage = callApi('https://discord.com/api/channels/' . $channelId . '/messages', 'POST', $putheader, $postdata);
+    $rvaladdtoguild = callApi('https://discord.com/api/guilds/' . $guildId . '/members/' . $user->id, 'PUT', $header, $putdata);
 
     //change nick name and role (if already in server)
-    $rvalchangeandverify = callApi('https://discord.com/api/guilds/' . $guildId . '/members/' . $user->id, 'PATCH', $putheader, $putdata);
+    $rvalchangeandverify = callApi('https://discord.com/api/guilds/' . $guildId . '/members/' . $user->id, 'PATCH', $header, $putdata);
 
     //redirect after done
     //header('Location: ' . $postauthURL);
@@ -110,7 +111,8 @@ function callApi($url, $method = '', $headers = array(), $data = array()) {
     switch ($method)
     {
         case "POST":
-          curl_setopt($curl, CURLOPT_POST, true);
+          //curl_setopt($curl, CURLOPT_POST, true);
+          curl_setopt($curl, CURLOPT_CUSTOMREQUEST, 'POST');
           curl_setopt($curl, CURLOPT_POSTFIELDS, json_encode($data));
         case "PUT":
           curl_setopt($curl, CURLOPT_CUSTOMREQUEST, 'PUT');
