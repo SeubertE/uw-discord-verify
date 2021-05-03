@@ -64,8 +64,8 @@ if(session('access_token')) {
   //header('Location: ' . $postauthURL);
 
   //debugging
-  print_r($postdata);
-  print_r($rvalsendmessage);
+/*   print_r($postdata);
+  print_r($rvalsendmessage); */
 
   die();
 } 
@@ -129,10 +129,11 @@ function callApi($url, $method = '', $headers = array(), $data = array()) {
     curl_setopt($curl, CURLOPT_FOLLOWLOCATION, TRUE);
     curl_setopt($curl, CURLOPT_RETURNTRANSFER, TRUE);
 
-    print_r($header);
+    print_r($headers);
     print_r($data);
 
     $result = curl_exec($curl);
+    print_r($result);
     curl_close($curl);
     return json_decode($result);
 }
