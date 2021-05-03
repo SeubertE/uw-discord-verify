@@ -39,7 +39,7 @@ if(session('access_token')) {
     //add them to the server!
     $putheader = array(
         'Content-Type: application/json',
-        'Authorization: Bot ' + $botToken,
+        'Authorization: Bot ' . $botToken,
     );
 
     $putdata = array(

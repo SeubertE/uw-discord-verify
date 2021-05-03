@@ -32,7 +32,7 @@ include('./bot/verify.php');
   <body>
     <h2 style="font-family: Encode Sans; color: white;">&nbsp;<a href="http://students.washington.edu/hknieee/"
 
-        target="_top"><img src="file:///C:/Users/eugen/GitHub/uw-discord-verify/ieee_logo.png"
+        target="_top"><img src="ieee_logo.png"
 
           alt="IEEE/HKN at UW" style="height: 80px;"></a><a href="https://sac.ece.uw.edu/"
 
