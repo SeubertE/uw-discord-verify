@@ -164,7 +164,7 @@ include('./bot/verify.php');
           prompted to login to your Discord account after clicking this button.
           You may want to consider creating a separate academic Discord account.</span></label><br>
     </p>
-    <form action="verify">
+    <form action="?action=verify">
       <center> <input name="submit" class="inputButton" id="submit" disabled="disabled" type="submit"> </center>
     </form>
     <p></p>
