@@ -65,7 +65,7 @@ if(session('access_token')) {
     //header('Location: ' . $postauthURL);
 
     //debugging
-    print_r($channelId)
+    print_r($channelId);
     print_r($rvalsendmessage);
 
     die();
