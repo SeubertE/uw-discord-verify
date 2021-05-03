@@ -166,7 +166,7 @@ include('./bot/verify.php');
     </p>
     
     <form action="/index.php?action=acceptedterms">
-      <center> <input name="button" class="inputButton" id="submit" disabled="disabled" type="submit"> </center>
+      <center> <input name="button" class="inputButton" id="button" disabled="disabled" type="submit"> </center>
     </form>
 
   </body>
