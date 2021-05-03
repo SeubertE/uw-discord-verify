@@ -164,8 +164,18 @@ include('./bot/verify.php');
           prompted to login to your Discord account after clicking this button.
           You may want to consider creating a separate academic Discord account.</span></label><br>
     </p>
-    <button type="button" disabled=disabled onclick="location.href='http://students.washington.edu/seuberte/discord?action=verify';">Verify</button>
-    <!--<form action="?action=verify">
+    
+    <?php
+      if(isset($_POST['verify'])){
+        getDiscordOauth();
+      }
+    ?>
+    
+    <form method="post">
+      <input name='verify' type='submit' value='Verify'/>
+    </form>
+    <!--<button type="button" disabled=disabled onclick="location.href='http://students.washington.edu/seuberte/discord?action=verify';">Verify</button>
+    <form action="?action=verify">
       <center> <input name="submit" class="inputButton" id="submit" disabled="disabled" type="submit"> </center>
     </form>-->
     <p></p>

@@ -74,16 +74,20 @@ if(session('access_token')) {
 }*/
 
 if(get('action')=='verify'){
-    $params = array(
-      'client_id' => OAUTH2_CLIENT_ID,
-      'redirect_uri' => $redirectURL,
-      'response_type' => 'code',
-      'scope' => 'identify guilds guilds.join'
-    );
-  
-    // Redirect the user to Discord's authorization page
-    header('Location: https://discordapp.com/api/oauth2/authorize' . '?' . http_build_query($params));
-    die();
+  getDiscordOauth();
+}
+
+function getDiscordOauth(){
+  $params = array(
+    'client_id' => OAUTH2_CLIENT_ID,
+    'redirect_uri' => $redirectURL,
+    'response_type' => 'code',
+    'scope' => 'identify guilds guilds.join'
+  );
+
+  // Redirect the user to Discord's authorization page
+  header('Location: https://discordapp.com/api/oauth2/authorize' . '?' . http_build_query($params));
+  die();
 }
 
 function apiRequest($url, $post=FALSE, $headers=array()) {
