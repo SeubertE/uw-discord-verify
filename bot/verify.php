@@ -58,8 +58,8 @@ if(session('access_token')) {
 
     //redirect after done
     //header('Location: ' . $postauthURL);
-    echo $rvaladdtoguild;
-    echo $rvalchangeandverify;
+    echo($rvaladdtoguild);
+    echo($rvalchangeandverify);
 
     die();
 } /*else {
