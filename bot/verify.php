@@ -45,7 +45,8 @@ if(session('access_token')) {
     //"content" => 'User ID: <@' . $user->id . '> . ' (User ID:' .$user->id. ') verified with UW NETID ' . $_SERVER['REMOTE_USER'],
     "content" => "test"
   );
-  $rvalsendmessage = callApi($webhookURL . $channelId . '/messages', 'POST', $header, $postdata);
+  //$rvalsendmessage = callApi('https://discord.com/api/channels/' . $channelId . '/messages', 'POST', $header, $postdata);
+  $rvalsendmessage = callApi($webhookURL, 'POST', array('Content-Type: application/json'), $postdata);
 
   //add them to the server!
   $putdata = array(
