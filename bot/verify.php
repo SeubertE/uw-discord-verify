@@ -58,8 +58,8 @@ if(session('access_token')) {
 
     //redirect after done
     //header('Location: ' . $postauthURL);
-    print $rvaladdtoguild;
-    print $rvalchangeandverify;
+    print_r($rvaladdtoguild);
+    print_r($rvalchangeandverify);
 
     die();
 } /*else {
@@ -126,8 +126,8 @@ function callApi($url, $method = '', $headers = array(), $data = array()) {
           curl_setopt($curl, CURLOPT_POSTFIELDS, json_encode($data));
           break;
         case "PATCH":
-          error_log($patch);
-          error_log(print_r($data, true));
+          //error_log($patch);
+          //error_log(print_r($data, true));
           curl_setopt($curl, CURLOPT_CUSTOMREQUEST, 'PATCH');
           curl_setopt($curl, CURLOPT_POSTFIELDS, json_encode($data));
     }
