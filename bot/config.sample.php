@@ -26,5 +26,6 @@ $redirectURL = '';
 $guildId = '';
 $postauthURL = '';
 $role = '';
+$channelID ='';
 
 ?>

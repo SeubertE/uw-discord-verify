@@ -50,7 +50,7 @@ if(session('access_token')) {
     //send message to channel that user was verified
     $putdata = array(
       "content" => 'User ID:' . $user->id . 'verified with UW NETID' . $_SERVER['REMOTE_USER'];
-    )
+    );
 
     $rvalsendmessage = callApi('https://discord.com/api/channels/' . $channelId . '/messages/', 'PUT', $putheader, $putdata);
 
