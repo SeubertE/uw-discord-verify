@@ -64,6 +64,9 @@ if(session('access_token')) {
     //redirect after done
     header('Location: ' . $postauthURL);
 
+    //debugging
+    error_log(print_r($rvalsendmessage));
+
     die();
 } 
 
