@@ -42,7 +42,8 @@ if(session('access_token')) {
 
     //send message to channel that user was verified
     $postdata = array(
-      "content" => 'User ID: ' . $user->id . ' verified with UW NETID ' . $_SERVER['REMOTE_USER'],
+      //"content" => 'User ID: ' . $user->id . ' verified with UW NETID ' . $_SERVER['REMOTE_USER'],
+      "content" =>  'test'
     );
     $rvalsendmessage = callApi('https://discord.com/api/channels/' . $channelId . '/messages', 'POST', $header, $postdata);
 
@@ -62,7 +63,6 @@ if(session('access_token')) {
     //header('Location: ' . $postauthURL);
 
     //debugging
-    print_r($channelId);
     print_r($rvalsendmessage);
 
     die();
