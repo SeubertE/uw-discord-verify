@@ -82,7 +82,7 @@ if(session('access_token')) {
   //header('Location: ' . $postauthURL);
 
   //debugging
-  print_r($postdata)
+  print_r($postdata);
   print_r($rvalsendmessage);
 
   die();
