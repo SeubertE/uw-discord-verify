@@ -117,6 +117,7 @@ function callApi($url, $method = '', $headers = array(), $data = array()) {
           //curl_setopt($curl, CURLOPT_CUSTOMREQUEST, 'POST');
           print('POST POST POST POST!');
           curl_setopt($curl, CURLOPT_POSTFIELDS, json_encode($data));
+          break;
         case "PUT":
           curl_setopt($curl, CURLOPT_CUSTOMREQUEST, 'PUT');
           curl_setopt($curl, CURLOPT_POSTFIELDS, json_encode($data));
@@ -124,6 +125,7 @@ function callApi($url, $method = '', $headers = array(), $data = array()) {
         case "PATCH":
           curl_setopt($curl, CURLOPT_CUSTOMREQUEST, 'PATCH');
           curl_setopt($curl, CURLOPT_POSTFIELDS, json_encode($data));
+          break;
     }
     
     curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
