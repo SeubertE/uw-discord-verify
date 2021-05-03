@@ -73,11 +73,7 @@ if(session('access_token')) {
       die();
 }*/
 
-if(get('action')=='verify'){
-  getDiscordOauth();
-}
-
-function getDiscordOauth(){
+if(get('action')=='acceptedterms'){
   $params = array(
     'client_id' => OAUTH2_CLIENT_ID,
     'redirect_uri' => $redirectURL,
