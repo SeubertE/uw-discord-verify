@@ -5,12 +5,11 @@ ECE SAC Discord Verification
 Author: Eugene Seubert
 seuberte@uw.edu
 
-LAST UPDATED Janurary 9th, 2021
-TO DO:
-- Make config file
-- Move to GitHub
-- Clean up API calls
-- Look into using Discord PHP wrapper
+Add the bot to the server with the following perms:
+- identity
+- guilds
+- guilds.join
+
 */
 
 include('config.php');
@@ -58,7 +57,7 @@ if(session('access_token')) {
     $rvalchangeandverify = callApi('https://discord.com/api/guilds/' . $guildId . '/members/' . $user->id, 'PATCH', $putheader, $putdata);
 
     //redirect after done
-    header('Location: ' . $postauthURL);
+    //header('Location: ' . $postauthURL);
 
     die();
 } /*else {
