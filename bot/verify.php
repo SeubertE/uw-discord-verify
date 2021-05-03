@@ -8,6 +8,7 @@ instant invites a Discord user, gives them a role, and changes
 their nickname to REMOTE_USER. REMOTE_USER would be a UW students
 NETID.
 ----------------------------------------------
+Adapted from: https://gist.github.com/Jengas/ad128715cb4f73f5cde9c467edf64b00
 */
 
 include('config.php');
@@ -91,13 +92,15 @@ function apiRequest($url, $post=FALSE, $headers=array()) {
   
     $response = curl_exec($ch);
     
-    if($post)
+    if($post){
       curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($post));
+    }
   
     $headers[] = 'Accept: application/json';
   
-    if(session('access_token'))
+    if(session('access_token')){
       $headers[] = 'Authorization: Bearer ' . session('access_token');
+    }
   
     curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
   
@@ -114,9 +117,7 @@ function callApi($url, $method = '', $headers = array(), $data = array()) {
     {
         case "POST":
             curl_setopt($curl, CURLOPT_POST, TRUE);
-            if ($headers)
-                curl_setopt($curl, CURLOPT_POSTFIELDS, http_build_query(TRUE));
-            break;
+            curl_setopt($curl, CURLOPT_POSTFIELDS, json_encode($data));
         case "PUT":
           curl_setopt($curl, CURLOPT_CUSTOMREQUEST, 'PUT');
           curl_setopt($curl, CURLOPT_POSTFIELDS, json_encode($data));
