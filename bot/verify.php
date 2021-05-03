@@ -49,17 +49,12 @@ if(session('access_token')) {
     $rvaladdtoguild = callApi('https://discord.com/api/guilds/' . $guildId . '/members/' . $user->id, 'PUT', $putheader, $putdata);
 
     //send message to channel that user was verified
-    $putdata = array(
-      "content" => 'User ID:' . $user->id . 'verified with UW NETID' . $_SERVER['REMOTE_USER']
+    $postdata = array(
+      "content" => 'User ID: ' . $user->id . ' verified with UW NETID ' . $_SERVER['REMOTE_USER'],
     );
-
-    $rvalsendmessage = callApi('https://discord.com/api/channels/' . $channelId . '/messages', 'POST', $putheader, $putdata);
+    $rvalsendmessage = callApi('https://discord.com/api/channels/' . $channelId . '/messages', 'POST', $putheader, $postdata);
 
     //change nick name and role (if already in server)
-    $patchheader = array(
-      'Content-Type: application/json',
-    );
-
     $rvalchangeandverify = callApi('https://discord.com/api/guilds/' . $guildId . '/members/' . $user->id, 'PATCH', $putheader, $putdata);
 
     //redirect after done
@@ -111,14 +106,11 @@ function apiRequest($url, $post=FALSE, $headers=array()) {
 function callApi($url, $method = '', $headers = array(), $data = array()) {
     
     $curl = curl_init($url);
-    curl_setopt($curl, CURLOPT_RETURNTRANSFER, TRUE);
 
     switch ($method)
     {
         case "POST":
-          print("POSTING");
-          print_r($data);
-          curl_setopt($curl, CURLOPT_POST, TRUE);
+          curl_setopt($curl, CURLOPT_POST, true);
           curl_setopt($curl, CURLOPT_POSTFIELDS, json_encode($data));
         case "PUT":
           curl_setopt($curl, CURLOPT_CUSTOMREQUEST, 'PUT');
@@ -130,6 +122,7 @@ function callApi($url, $method = '', $headers = array(), $data = array()) {
     }
     
     curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
+    curl_setopt($curl, CURLOPT_RETURNTRANSFER, TRUE);
 
     $result = curl_exec($curl);
     curl_close($curl);
