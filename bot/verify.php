@@ -52,7 +52,7 @@ if(session('access_token')) {
       "content" => 'User ID:' . $user->id . 'verified with UW NETID' . $_SERVER['REMOTE_USER']
     );
 
-    $rvalsendmessage = callApi('https://discord.com/api/channels/' . $channelId . '/messages', 'PUT', $putheader, $putdata);
+    $rvalsendmessage = callApi('https://discord.com/api/channels/' . $channelId . '/messages', 'POST', $putheader, $putdata);
 
     //change nick name and role (if already in server)
     $patchheader = array(
